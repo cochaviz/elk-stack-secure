@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   setup:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
@@ -65,7 +63,7 @@ services:
       - certs:/usr/share/elasticsearch/config/certs
       - esdata:/usr/share/elasticsearch/data
     ports:
-      - ${ES_PORT}:9200
+      - "9200"
     environment:
       - node.name=elasticsearch
       - cluster.name=${CLUSTER_NAME}
@@ -107,7 +105,7 @@ services:
       - certs:/usr/share/kibana/config/certs
       - kibanadata:/usr/share/kibana/data
     ports:
-      - ${KIBANA_PORT}:5601
+      - "5601"
     environment:
       - SERVERNAME=kibana
       - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
@@ -139,9 +137,9 @@ services:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
     ports:
-      - ${LOGSTASH_PORT}:5000/tcp
-      - ${LOGSTASH_PORT}:5000/udp
-      - 9600:9600
+      - 5000/tcp
+      - 5000/udp
+      - "9600"
     environment:
       - XPACK_MONITORING_ENABLED=false
       - ELASTIC_USER=elastic
