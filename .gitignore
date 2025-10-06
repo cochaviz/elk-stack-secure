@@ -1,0 +1,22 @@
+# Environment files
+.env
+
+# Data directories
+esdata/
+kibanadata/
+logstashdata/
+certs/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
